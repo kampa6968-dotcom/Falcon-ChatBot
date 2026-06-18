@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falcon AI Pro</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+height:100vh;
+overflow:hidden;
+color:white;
+}
+
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+inset:0;
+background:linear-gradient(
+45deg,
+#00f7ff,
+#0066ff,
+#7b00ff,
+#ff00f2,
+#00f7ff
+);
+background-size:500% 500%;
+animation:gradientMove 12s ease infinite;
+z-index:-5;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.centerGlow{
+position:fixed;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+width:500px;
+height:500px;
+border-radius:50%;
+background:radial-gradient(circle,
+rgba(255,255,255,.25),
+rgba(0,255,255,.15),
+transparent 70%);
+filter:blur(30px);
+animation:pulse 3s infinite;
+z-index:-4;
+}
+
+@keyframes pulse{
+50%{
+transform:translate(-50%,-50%) scale(1.15);
+}
+}
+
+/* START SCREEN */
+
+#startScreen{
+position:absolute;
+inset:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:20px;
+}
+
+.logo{
+font-size:90px;
+font-weight:900;
+letter-spacing:8px;
+
+text-shadow:
+0 0 10px #00ffff,
+0 0 20px #00ffff,
+0 0 40px #00ffff,
+0 0 80px #00ffff;
+}
+
+.subtitle{
+font-size:22px;
+letter-spacing:5px;
+}
+
+#startBtn{
+padding:18px 60px;
+font-size:24px;
+font-weight:bold;
+border:none;
+border-radius:50px;
+cursor:pointer;
+color:white;
+background:linear-gradient(
+90deg,
+#00ffff,
+#0066ff,
+#ff00ff
+);
+box-shadow:
+0 0 10px #00ffff,
+0 0 20px #00ffff,
+0 0 40px #00ffff;
+}
+
+/* CHAT */
+
+#chatApp{
+display:none;
+height:100vh;
+padding:20px;
+}
+
+.header{
+text-align:center;
+font-size:32px;
+font-weight:bold;
+margin-bottom:15px;
+
+text-shadow:
+0 0 10px cyan,
+0 0 30px cyan;
+}
+
+#chat{
+height:75vh;
+overflow-y:auto;
+
+background:rgba(0,0,0,.35);
+
+border:1px solid rgba(255,255,255,.2);
+
+backdrop-filter:blur(10px);
+
+padding:15px;
+border-radius:20px;
+}
+
+.user{
+text-align:right;
+margin:10px 0;
+}
+
+.bot{
+text-align:left;
+margin:10px 0;
+}
+
+.bubble{
+display:inline-block;
+padding:12px 16px;
+border-radius:18px;
+max-width:80%;
+}
+
+.user .bubble{
+background:#0066ff;
+}
+
+.bot .bubble{
+background:#111;
+border:1px solid cyan;
+}
+
+.controls{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+input{
+flex:1;
+padding:15px;
+font-size:18px;
+border:none;
+outline:none;
+border-radius:12px;
+}
+
+button{
+padding:15px 20px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.send{
+background:cyan;
+}
+
+.voice{
+background:magenta;
+color:white;
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="centerGlow"></div>
+
+<!-- START -->
+
+<div id="startScreen">
+
+<div class="logo" id="logo">
+FALCON AI
+</div>
+
+<div class="subtitle" id="status">
+NEON LIGHTS
+</div>
+
+<button id="startBtn">
+START
+</button>
+
+</div>
+
+<!-- CHAT -->
+
+<div id="chatApp">
+
+<div class="header">
+FALCON AI PRO
+</div>
+
+<div id="chat"></div>
+
+<div class="controls">
+
+<input
+id="userInput"
+placeholder="Ask Falcon AI..."
+>
+
+<button
+class="send"
+onclick="sendMessage()">
+SEND
+</button>
+
+<button
+class="voice"
+onclick="startVoice()">
+🎤
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* PARTICLES */
+
+for(let i=0;i<200;i++){
+
+const p=document.createElement("div");
+
+p.style.position="fixed";
+p.style.width="3px";
+p.style.height="3px";
+p.style.borderRadius="50%";
+p.style.background="white";
+p.style.left=Math.random()*100+"vw";
+p.style.top=Math.random()*100+"vh";
+p.style.opacity=Math.random();
+
+document.body.appendChild(p);
+}
+
+/* START */
+
+document.getElementById("startBtn").onclick=()=>{
+
+document.getElementById("logo").innerHTML="LOADING...";
+document.getElementById("status").innerHTML="INITIALIZING";
+
+setTimeout(()=>{
+
+document.getElementById("startScreen").style.display="none";
+
+document.getElementById("chatApp").style.display="block";
+
+loadMemory();
+
+botMessage(
+"Hello. I am Falcon AI Pro. Ask me anything."
+);
+
+},2000);
+
+};
+
+/* KNOWLEDGE */
+
+const falconKnowledge=[
+
+{
+keys:["hello","hi"],
+reply:"Hello! Welcome to Falcon AI Pro."
+},
+
+{
+keys:["your name"],
+reply:"My name is Falcon AI Pro."
+},
+
+{
+keys:["what is ai"],
+reply:"Artificial Intelligence allows computers to perform intelligent tasks."
+},
+
+{
+keys:["capital of india"],
+reply:"New Delhi is the capital of India."
+}
+,
+{
+keys:["who is the president of usa","current president of usa"],
+reply:"As of 2024, the President of the United States is Joe Biden."
+},
+
+{keys:["who is the ceo of tesla","current ceo of tesla"],
+reply:"As of 2024, the CEO of Tesla is Elon Musk."
+},
+
+{keys:["what is the weather today","current weather"],
+reply:"I am sorry, I cannot provide real-time weather updates. Please check a reliable weather service for the latest information."
+},
+
+{keys:["noob","stupid","dumb"],
+reply:"Please refrain from using offensive language. Let's keep our conversation respectful."
+}, 
+
+{keys:["goodbye","bye, see you later, take care, farewell, see you soon"],
+reply:"Goodbye! Take care and see you soon."
+},
+
+
+
+];
+
+/* CHAT */
+
+function sendMessage(){
+
+const input=document.getElementById("userInput");
+
+const text=input.value.trim();
+
+if(!text)return;
+
+userMessage(text);
+
+input.value="";
+
+findReply(text);
+
+}
+
+/* USER */
+
+function userMessage(text){
+
+const chat=document.getElementById("chat");
+
+chat.innerHTML+=`
+<div class="user">
+<div class="bubble">${text}</div>
+</div>
+`;
+
+saveMemory();
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+/* BOT */
+
+function botMessage(text){
+
+const chat=document.getElementById("chat");
+
+chat.innerHTML+=`
+<div class="bot">
+<div class="bubble">${text}</div>
+</div>
+`;
+
+saveMemory();
+
+chat.scrollTop=chat.scrollHeight;
+
+speak(text);
+
+}
+
+/* SEARCH */
+
+function findReply(text){
+
+text=text.toLowerCase();
+
+let answer=
+"I do not know that yet. Add more knowledge entries.";
+
+for(const item of falconKnowledge){
+
+if(item.keys.some(
+k=>text.includes(k)
+)){
+
+answer=item.reply;
+break;
+
+}
+
+}
+
+typing(answer);
+
+}
+
+/* TYPING */
+
+function typing(answer){
+
+const chat=document.getElementById("chat");
+
+chat.innerHTML+=`
+<div class="bot" id="typing">
+<div class="bubble">
+Typing...
+</div>
+</div>
+`;
+
+chat.scrollTop=chat.scrollHeight;
+
+setTimeout(()=>{
+
+document
+.getElementById("typing")
+.remove();
+
+botMessage(answer);
+
+},1200);
+
+}
+
+/* VOICE */
+
+function startVoice(){
+
+const SpeechRecognition=
+window.SpeechRecognition||
+window.webkitSpeechRecognition;
+
+if(!SpeechRecognition){
+
+alert("Voice not supported.");
+
+return;
+}
+
+const rec=
+new SpeechRecognition();
+
+rec.start();
+
+rec.onresult=e=>{
+
+const text=
+e.results[0][0].transcript;
+
+document
+.getElementById("userInput")
+.value=text;
+
+sendMessage();
+
+};
+
+}
+
+/* SPEAK */
+
+function speak(text){
+
+speechSynthesis.speak(
+new SpeechSynthesisUtterance(text)
+);
+
+}
+
+/* MEMORY */
+
+function saveMemory(){
+
+localStorage.setItem(
+"falconChat",
+document.getElementById("chat").innerHTML
+);
+
+}
+
+function loadMemory(){
+
+const saved=
+localStorage.getItem(
+"falconChat"
+);
+
+if(saved){
+
+document.getElementById("chat").innerHTML=saved;
+
+}
+
+}
+
+/* ENTER */
+
+document
+.getElementById("userInput")
+.addEventListener(
+"keydown",
+e=>{
+
+if(e.key==="Enter")
+sendMessage();
+
+}
+);
+
+</script>
+
+</body>
+</html>
