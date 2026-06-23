@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A SUCCESS STORY</title>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&display=swap');
+
+body{
+margin:0;
+font-family:'Orbitron', sans-serif;
+background:#05010a;
+color:#00ffe1;
+overflow-x:hidden;
+}
+
+/* Animated neon background */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%, #ff00ff33, transparent 40%),
+radial-gradient(circle at 80% 30%, #00ffe133, transparent 40%),
+radial-gradient(circle at 50% 80%, #7a00ff33, transparent 40%);
+animation:moveBG 8s infinite alternate;
+z-index:-1;
+}
+
+@keyframes moveBG{
+0%{transform:scale(1) rotate(0deg);}
+100%{transform:scale(1.2) rotate(5deg);}
+}
+
+header{
+text-align:center;
+padding:50px 20px;
+border-bottom:1px solid #00ffe1;
+box-shadow:0 0 30px #00ffe1;
+}
+
+h1{
+font-size:40px;
+text-shadow:0 0 10px #00ffe1, 0 0 30px #7a00ff;
+}
+
+.subtitle{
+color:#aaa;
+letter-spacing:2px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px;
+}
+
+.box{
+background:rgba(0,0,0,0.6);
+border:1px solid #00ffe1;
+padding:20px;
+margin:20px 0;
+border-radius:12px;
+box-shadow:0 0 15px #00ffe155;
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.box:hover{
+transform:scale(1.03);
+box-shadow:0 0 30px #00ffe1;
+}
+
+/* Neon scan line effect */
+.box::after{
+content:"";
+position:absolute;
+top:-100%;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, transparent, #00ffe122, transparent);
+animation:scan 3s infinite;
+}
+
+@keyframes scan{
+0%{top:-100%;}
+100%{top:100%;}
+}
+
+.highlight{
+color:#ff00ff;
+text-shadow:0 0 10px #ff00ff;
+}
+
+button{
+padding:12px 25px;
+background:#00ffe1;
+border:none;
+cursor:pointer;
+font-weight:bold;
+border-radius:8px;
+box-shadow:0 0 15px #00ffe1;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff00ff;
+color:white;
+box-shadow:0 0 25px #ff00ff;
+}
+
+footer{
+text-align:center;
+padding:20px;
+color:#555;
+border-top:1px solid #222;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>NEON CYBERPUNK CODING JOURNEY</h1>
+<p class="subtitle">FROM BLANK SCREEN → CODE MASTER REALITY</p>
+</header>
+
+<div class="container">
+
+<div class="box">
+INITIAL BOOT SEQUENCE...
+<br><br>
+<span class="highlight">&lt;html&gt;</span> detected.
+A mind awakens in the digital void.
+</div>
+
+<div class="box">
+FIRST CODE INJECTION:
+<br><br>
+<span class="highlight">&lt;h1&gt;HELLO WORLD&lt;/h1&gt;</span>
+<br>
+Reality responds. The system listens.
+</div>
+
+<div class="box">
+DEBUG PHASE:
+Errors appear like enemies.
+But every error strengthens the coder’s neural network.
+</div>
+
+<div class="box">
+UPGRADE UNLOCKED:
+JavaScript CORE ACTIVATED.
+Now the world reacts, moves, and evolves.
+</div>
+
+<div class="box">
+SYSTEM EVOLUTION:
+Websites are no longer pages…
+They are LIVING DIGITAL WORLDS.
+</div>
+
+<div class="box">
+FINAL FORM ACHIEVED:
+<span class="highlight">CYBER CODE MASTER</span>
+<br><br>
+A creator inside the matrix of the web.
+</div>
+
+<div class="box">
+<button onclick="startGlitch()">ENTER FINAL REALITY</button>
+</div>
+
+
+</div>
+
+<footer>
+NEON SYSTEM ONLINE • CYBERPUNK ENGINE ACTIVE
+</footer>
+
+<script>
+function startGlitch(){
+document.body.style.animation="glitch 0.2s infinite";
+
+setTimeout(()=>{
+alert("SYSTEM OVERRIDE COMPLETE: YOU ARE NOW A CODE MASTER ⚡");
+document.body.style.animation="";
+},2000);
+}
+</script>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;900&display=swap');
+
+html{scroll-behavior:smooth;}
+
+body{
+margin:0;
+font-family:'Orbitron', sans-serif;
+background:#05010a;
+color:#00ffe1;
+overflow-x:hidden;
+}
+
+/* BACKGROUND */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%, #ff00ff33, transparent 40%),
+radial-gradient(circle at 80% 30%, #00ffe133, transparent 40%),
+radial-gradient(circle at 50% 80%, #7a00ff33, transparent 40%);
+animation:moveBG 8s infinite alternate;
+z-index:-1;
+}
+
+@keyframes moveBG{
+0%{transform:scale(1);}
+100%{transform:scale(1.2) rotate(6deg);}
+}
+
+/* POWERPOINT INTRO */
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+background:#000;
+overflow:hidden;
+height:100vh;
+}
+
+/* STARTUP SCREEN */
+</style>
+<script>
+window.addEventListener("load", () => {
+
+const startup = document.getElementById("startup");
+
+setTimeout(() => {
+
+startup.style.opacity = "0";
+
+setTimeout(() => {
+startup.remove();
+}, 1000);
+
+}, 4000);
+
+});
+</script>
+<style>
+
+#startup{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+/* NEON BACKGROUND */
+
+#startup::before{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(circle at 50% 50%,#00ffff22,transparent 40%),
+radial-gradient(circle at 20% 20%,#ff00ff22,transparent 40%),
+radial-gradient(circle at 80% 80%,#00ff8822,transparent 40%);
+
+animation:bgMove 6s infinite alternate;
+}
+
+@keyframes bgMove{
+0%{
+transform:scale(1);
+}
+100%{
+transform:scale(1.2);
+}
+}
+
+/* FAST CINEMATIC SLASH */
+
+.slash{
+position:absolute;
+
+width:3500px;
+height:16px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+#ffffff,
+#00ffff,
+#ffffff,
+transparent
+);
+
+box-shadow:
+0 0 30px #00ffff,
+0 0 80px #00ffff,
+0 0 150px #00ffff;
+
+transform:
+rotate(-35deg)
+translate(-3500px,1800px);
+
+animation:flyThrough 1s cubic-bezier(.15,.8,.1,1) forwards;
+}
+
+@keyframes flyThrough{
+
+0%{
+transform:
+rotate(-35deg)
+translate(-3500px,1800px);
+}
+
+100%{
+transform:
+rotate(-35deg)
+translate(3500px,-1800px);
+}
+
+}
+
+/* FLASH */
+
+.flash{
+position:absolute;
+inset:0;
+background:white;
+opacity:0;
+animation:flash .25s forwards;
+animation-delay:.8s;
+}
+
+@keyframes flash{
+0%{
+opacity:0;
+}
+50%{
+opacity:1;
+}
+100%{
+opacity:0;
+}
+}
+
+/* TITLE */
+
+.logo{
+position:relative;
+z-index:10;
+
+font-size:180px;
+font-weight:900;
+
+letter-spacing:12px;
+
+opacity:0;
+
+background:
+linear-gradient(
+90deg,
+#00ffff,
+#ffffff,
+#00ffff
+);
+
+-webkit-background-clip:text;
+background-clip:text;
+/* include vendor-prefixed for Safari/old browsers */
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 20px #00ffff,
+0 0 50px #00ffff,
+0 0 120px #00ffff;
+
+animation:
+logoShow 1.2s forwards,
+glitch .12s infinite;
+
+animation-delay:1.1s;
+}
+
+/* SUBTEXT */
+
+.sub{
+position:absolute;
+bottom:140px;
+
+font-size:20px;
+letter-spacing:8px;
+color:#aaa;
+
+opacity:0;
+
+animation:subShow 1s forwards;
+animation-delay:1.7s;
+}
+
+/* GLITCH */
+
+@keyframes glitch{
+0%{transform:translate(0);}
+20%{transform:translate(-2px,2px);}
+40%{transform:translate(2px,-2px);}
+60%{transform:translate(-1px,1px);}
+80%{transform:translate(1px,-1px);}
+100%{transform:translate(0);}
+}
+
+@keyframes logoShow{
+0%{
+opacity:0;
+transform:scale(.2);
+filter:blur(30px);
+}
+100%{
+opacity:1;
+transform:scale(1);
+filter:blur(0);
+}
+}
+
+@keyframes subShow{
+to{
+opacity:1;
+}
+}
+
+/* PARTICLES */
+
+.particle{
+position:absolute;
+width:4px;
+height:4px;
+background:#00ffff;
+border-radius:50%;
+box-shadow:0 0 15px #00ffff;
+animation:float linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+to{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="startup">
+
+<div class="slash"></div>
+
+<div class="flash"></div>
+
+<div class="logo">
+KORBLOX
+</div>
+
+<div class="sub">
+CINEMATIC EXPERIENCE
+</div>
+
+</div>
+
+<script>
+
+/* PARTICLES */
+
+for(let i=0;i<120;i++){
+
+const p=document.createElement("div");
+
+p.className="particle";
+
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(3+Math.random()*6)+"s";
+p.style.animationDelay=Math.random()*4+"s";
+
+document.body.appendChild(p);
+
+}
+</script>
+
+<style>
+#ppt{
+position:fixed;
+inset:0;
+background:black;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:9999;
+animation:fade 5s forwards;
+}
+
+#ppt h1{
+font-size:48px;
+text-shadow:0 0 20px #00ffe1;
+animation:glitch 1s infinite;
+}
+
+#ppt p{
+color:#aaa;
+letter-spacing:5px;
+}
+
+@keyframes fade{
+0%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
+}
+
+/* HEADER */
+header{
+text-align:center;
+padding:60px 20px;
+border-bottom:1px solid #00ffe1;
+box-shadow:0 0 30px #00ffe1;
+}
+
+h1{
+font-size:40px;
+text-shadow:0 0 10px #00ffe1, 0 0 30px #7a00ff;
+}
+
+/* STORY */
+#story{
+max-width:1100px;
+margin:auto;
+padding:40px;
+}
+
+/* BOX */
+.box{
+margin:25px 0;
+padding:30px;
+background:rgba(0,0,0,0.78);
+border:1px solid #00ffe1;
+border-radius:14px;
+box-shadow:0 0 25px #00ffe144;
+line-height:2;
+font-size:18px;
+opacity:0;
+transform:translateY(70px);
+transition:1s;
+position:relative;
+overflow:hidden;
+}
+
+.box::before{
+content:"";
+position:absolute;
+top:-100%;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom, transparent, #00ffe122, transparent);
+animation:scan 3s infinite;
+}
+
+@keyframes scan{
+0%{top:-100%;}
+100%{top:100%;}
+}
+
+.box.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.glitch{animation:glitch 0.3s infinite;}
+
+@keyframes glitch{
+0%{transform:translate(0);}
+25%{transform:translate(-2px,2px);}
+50%{transform:translate(2px,-2px);}
+75%{transform:translate(-1px,1px);}
+100%{transform:translate(0);}
+}
+
+.pain{
+color:#ff3b3b;
+border-color:#ff3b3b;
+background:rgba(60,0,0,0.7);
+text-shadow:0 0 10px red;
+}
+
+.success{
+color:#ffd700;
+border-color:#ffd700;
+background:rgba(0,0,0,0.85);
+text-shadow:0 0 12px gold;
+}
+
+.trophy{
+font-size:50px;
+display:block;
+text-align:center;
+animation:glow 1s infinite alternate;
+}
+
+@keyframes glow{
+from{transform:scale(1);}
+to{transform:scale(1.2);}
+}
+</style>
+
+<style>
+/* SCROLL INDICATOR */
+#scrollbar{
+position:fixed;
+right:0;
+top:0;
+width:6px;
+height:100vh;
+background:rgba(0,0,0,0.5);
+z-index:9998;
+}
+
+#scrolltrack{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:0%;
+background:linear-gradient(180deg, #00ffe1, #ff00ff);
+box-shadow:0 0 10px #00ffe1;
+transition:height 0.1s;
+}
+
+/* SCROLL-TO-TOP BUTTON */
+#scrolltop{
+position:fixed;
+bottom:30px;
+right:30px;
+width:50px;
+height:50px;
+background:linear-gradient(135deg, #00ffe1, #ff00ff);
+border:none;
+border-radius:50%;
+cursor:pointer;
+font-size:24px;
+box-shadow:0 0 20px #00ffe1;
+opacity:0;
+transition:0.3s;
+z-index:9997;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-weight:bold;
+}
+
+#scrolltop.show{
+opacity:1;
+}
+
+#scrolltop:hover{
+box-shadow:0 0 35px #ff00ff;
+transform:scale(1.1);
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="scrollbar">
+<div id="scrolltrack"></div>
+</div>
+
+<button id="scrolltop" onclick="scrollToTop()">↑</button>
+
+<header>
+<h1>A SUCCESS STORY</h1>
+</header>
+
+<div id="story"></div>
+ 
+<script>
+// Scroll indicator and scroll-to-top functionality
+const scrollTrack = document.getElementById('scrolltrack');
+const scrollTopBtn = document.getElementById('scrolltop');
+
+function updateScrollIndicator(){
+	const doc = document.documentElement;
+	const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+	const scrollHeight = doc.scrollHeight - doc.clientHeight;
+	const percent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+	scrollTrack.style.height = percent + '%';
+	if(percent > 5){
+		scrollTopBtn.classList.add('show');
+	} else {
+		scrollTopBtn.classList.remove('show');
+	}
+}
+
+function scrollToTop(){
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Expose for onclick attribute
+window.scrollToTop = scrollToTop;
+
+window.addEventListener('scroll', updateScrollIndicator, { passive: true });
+window.addEventListener('resize', updateScrollIndicator);
+// Initialize on load
+updateScrollIndicator();
+</script>
+
+<script>
+
+/* 🔥 LARGE CINEMATIC LINES */
+const lines=[
+"He was born into a world that appeared ordinary on the surface, yet from the very beginning his perception of reality operated on a completely different level, as if he was observing systems, patterns, and human behavior like hidden layers of an invisible simulation running beneath everyday life.",
+"From his earliest childhood moments, he did not engage with the world in a normal emotional way, instead he silently analyzed everything around him, trying to understand why people act the way they do, why systems behave unpredictably, and why logic often collapses under emotion.",
+"Pain did not arrive as a single event in his life, but rather as a continuous environment that slowly shaped his thinking, forcing him to build inner strength in silence while others misunderstood him without ever realizing the depth of his internal world.",
+"While most people around him focused on simple enjoyment and social acceptance, he often found himself disconnected, not because he lacked feeling, but because his mind constantly searched for meaning, structure, and deeper explanation behind everything he observed.",
+"Over time, loneliness became less of a weakness and more of a transformation space, where he began thinking deeply about existence, systems, intelligence, and how complexity itself could be broken down into understandable patterns and rebuilt again.",
+"The moment he discovered computers, something fundamentally changed inside him, because for the first time he encountered a system that responded exactly to logic, where every input had meaning and every mistake created a clear path toward correction and improvement.",
+"He began learning coding slowly and painfully, facing endless errors, broken outputs, and confusion, yet instead of quitting, he started studying those failures as instructions from the system itself, slowly building a deeper understanding of structured thinking.",
+"Each small project he built was not just a technical achievement but a psychological transformation, because every successful output proved that ideas inside his mind could be converted into real functioning systems that obeyed his control.",
+"As years passed, his thinking evolved beyond personal survival and shifted into creation-based thinking, where he no longer asked what is possible for him, but instead asked what is possible for humanity if systems could be redesigned intelligently.",
+"The world around him did not change instantly, but his internal vision expanded far beyond it, as he began imagining technologies, infrastructures, and systems that could reshape entire industries and redefine how humans interact with reality itself."
+];
+
+/* CREATE 200 BOXES */
+const story=document.getElementById("story");
+
+for(let i=0;i<200;i++){
+
+let div=document.createElement("div");
+div.className="box glitch";
+
+let a=lines[i%lines.length];
+let b=lines[(i+1)%lines.length];
+let c=lines[(i+2)%lines.length];
+
+div.innerHTML=a+"<br><br>"+b+"<br><br>"+c;
+
+if(i<70) div.classList.add("pain");
+else if(i>140) div.classList.add("success");
+
+story.appendChild(div);
+}
+
+/* SCROLL REVEAL */
+function reveal(){
+document.querySelectorAll(".box").forEach(b=>{
+let top=b.getBoundingClientRect().top;
+if(top<window.innerHeight-80){
+b.classList.add("show");
+}
+});
+}
+
+window.addEventListener("scroll",reveal);
+reveal();
+
+/* SCROLL SYSTEM */
+const scrollbar=document.getElementById("scrollbar");
+const scrolltrack=document.getElementById("scrolltrack");
+const scrolltop=document.getElementById("scrolltop");
+
+function updateScroll(){
+let scrolled=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+scrolltrack.style.height=scrolled+"%";
+
+if(window.scrollY>300){
+scrolltop.classList.add("show");
+}else{
+scrolltop.classList.remove("show");
+}
+}
+
+function scrollToTop(){
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+window.addEventListener("scroll",updateScroll);
+
+/* KEYBOARD SHORTCUT: Space to scroll */
+window.addEventListener("keydown",(e)=>{
+if(e.code==="Space"){
+e.preventDefault();
+window.scrollBy({top:window.innerHeight*0.8,behavior:"smooth"});
+}
+if(e.code==="Home"){
+scrollToTop();
+}
+if(e.code==="End"){
+window.scrollTo({top:document.documentElement.scrollHeight,behavior:"smooth"});
+}
+});
+
+</script>
+
+</body>
+</html>

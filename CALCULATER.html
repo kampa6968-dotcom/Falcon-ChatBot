@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CALCULATOR</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+}
+
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+.calculator{
+width:520px;
+padding:25px;
+border-radius:35px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.15);
+box-shadow:
+0 0 40px #00ffff,
+0 0 100px #00ffff44;
+animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+.title{
+text-align:center;
+font-size:32px;
+font-weight:900;
+letter-spacing:4px;
+color:#00ffff;
+margin-bottom:20px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%,100%{
+text-shadow:0 0 20px #00ffff;
+}
+50%{
+text-shadow:
+0 0 40px #00ffff,
+0 0 80px #00ffff;
+}
+}
+
+.display{
+width:100%;
+height:100px;
+border:none;
+outline:none;
+border-radius:25px;
+background:#00151f;
+color:#00ffff;
+font-size:42px;
+text-align:right;
+padding:20px;
+margin-bottom:20px;
+box-shadow:inset 0 0 20px #00ffff55;
+}
+
+.buttons{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+button{
+height:80px;
+border:none;
+border-radius:20px;
+font-size:28px;
+font-weight:bold;
+cursor:pointer;
+background:rgba(255,255,255,.08);
+color:white;
+border:1px solid rgba(255,255,255,.1);
+transition:.25s;
+}
+
+button:hover{
+transform:scale(1.07);
+box-shadow:0 0 25px #00ffff;
+}
+
+.operator{
+color:#ff66ff;
+}
+
+.equal{
+background:linear-gradient(45deg,#00ffff,#00ff88);
+color:black;
+}
+
+.clear{
+background:#ff333355;
+color:#ff9999;
+}
+
+.history{
+margin-top:20px;
+height:120px;
+overflow:auto;
+border-radius:15px;
+padding:10px;
+background:rgba(0,0,0,.3);
+color:#00ffff;
+}
+
+.history div{
+padding:5px;
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="calculator">
+
+<div class="title">⚡ CALCULATOR ⚡</div>
+
+<input id="display" class="display" readonly>
+
+<div class="buttons">
+
+<button class="clear" onclick="clearDisplay()">C</button>
+<button onclick="backspace()">⌫</button>
+<button onclick="append('%')">%</button>
+<button class="operator" onclick="append('/')">÷</button>
+
+<button onclick="append('7')">7</button>
+<button onclick="append('8')">8</button>
+<button onclick="append('9')">9</button>
+<button class="operator" onclick="append('*')">×</button>
+
+<button onclick="append('4')">4</button>
+<button onclick="append('5')">5</button>
+<button onclick="append('6')">6</button>
+<button class="operator" onclick="append('-')">−</button>
+
+<button onclick="append('1')">1</button>
+<button onclick="append('2')">2</button>
+<button onclick="append('3')">3</button>
+<button class="operator" onclick="append('+')">+</button>
+
+<button onclick="append('0')">0</button>
+<button onclick="append('.')">.</button>
+<button onclick="square()">x²</button>
+<button class="equal" onclick="calculate()">=</button>
+
+</div>
+
+<div class="history" id="history">
+<b>History</b>
+</div>
+
+</div>
+
+<script>
+const display=document.getElementById("display");
+const history=document.getElementById("history");
+
+function append(v){
+display.value+=v;
+}
+
+function clearDisplay(){
+display.value="";
+}
+
+function backspace(){
+display.value=display.value.slice(0,-1);
+}
+
+function square(){
+if(display.value){
+display.value=Math.pow(Number(display.value),2);
+}
+}
+
+function calculate(){
+try{
+let exp=display.value;
+let result=Function('"use strict";return ('+exp+')')();
+history.innerHTML+="<div>"+exp+" = "+result+"</div>";
+display.value=result;
+}catch{
+display.value="ERROR";
+}
+}
+
+document.addEventListener("keydown",e=>{
+
+if("0123456789+-*/.%".includes(e.key))
+display.value+=e.key;
+
+if(e.key==="Enter") calculate();
+if(e.key==="Backspace") backspace();
+if(e.key==="Escape") clearDisplay();
+
+});
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+const particles=[];
+
+for(let i=0;i<250;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*1.5,
+vy:(Math.random()-0.5)*1.5,
+size:Math.random()*3+1
+});
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+for(let i=0;i<particles.length;i++){
+
+let p=particles[i];
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fillStyle="#00ffff";
+ctx.fill();
+
+for(let j=i+1;j<particles.length;j++){
+
+let dx=p.x-particles[j].x;
+let dy=p.y-particles[j].y;
+let dist=Math.sqrt(dx*dx+dy*dy);
+
+if(dist<120){
+
+ctx.beginPath();
+ctx.moveTo(p.x,p.y);
+ctx.lineTo(particles[j].x,particles[j].y);
+
+ctx.strokeStyle=
+"rgba(0,255,255,"+(1-dist/120)*0.25+")";
+
+ctx.stroke();
+
+}
+
+}
+
+}
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+window.onresize=()=>{
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+};
+</script>
+
+</body>
+</html>
